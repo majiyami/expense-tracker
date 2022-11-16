@@ -1,13 +1,19 @@
 const express = require('express')
 const router = express.Router()
-const Todo = require('../../models/todo')
+const Expense = require('../../models/expense')
 
 router.get('/', (req, res) => {
   const userId = req.user._id
-  Todo.find({ userId })
+  Expense.find({ userId })
     .lean()
     .sort({ _id: 'asc' })  //desc
-    .then(todos => res.render('index', { todos }))
+    .then(expense => {
+      let total = 0
+      for (let i = 0; i < expense.length; i++) {
+        total += expense[i].amount
+      }
+      return res.render('index', { expense, total })
+    })
     .catch(error => console.error(error))
 })
 

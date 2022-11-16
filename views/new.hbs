@@ -1,4 +1,61 @@
-<form action="/todos" method="post">
-  <input type="text" placeholder="name" name="name">
-  <button type="submit">Create</button>
-</form>
+<div class="container col-3">
+  <form action="/expenses" method="POST">
+    <div class="mb-5  row">
+      <span class="col-4">*必填欄位</span>
+      <h4 class="col-8" style="text-align:center">請輸入你的支出</h4>
+    </div>
+
+
+    <div class="mb-3 row">
+      <label for="name" class="form-label col-4">
+        <h4>名稱*：</h4>
+      </label>
+      <div class="col-8">
+        <input type="text" class="form-control" id="name" maxlength="20" name="name" placeholder="ex：房租" required>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="date" class="form-label col-4">
+        <h4>日期*：</h4>
+      </label>
+      <div class="col-8">
+        <input type="date" class="form-control" id="date" max="2099-12-31" min="2022-11-13" name="date" required>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="category" class="form-label col-4">
+        <h4>類別*：</h4>
+      </label>
+      <div class="col-8">
+        <select class="form-control" id="category" name="categoryId" required>
+          <option value="">類別</option>
+          <option value="1">家居</option>
+          <option value="2">交通</option>
+          <option value="3">娛樂</option>
+          <option value="4">餐飲</option>
+          <option value="5">其他</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="amount" class="form-label col-4">
+        <h4>金額*：</h4>
+      </label>
+      <div class="col-8">
+        <input type="number" class="form-control" max="999999999" data-bs-toggle="collapse"
+          id="amount" name="amount" placeholder="如：999999" required>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <div class="col-9"></div>
+      <div class="col-3">
+        <button type="submit" class="btn btn-outline-primary">新增支出</button>
+      </div>
+    </div>
+
+  </form>
+</div>

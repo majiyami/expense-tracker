@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
+const expense = require('../../models/expense')
 
 router.get('/facebook', passport.authenticate('facebook', {
   scope: ['email', 'public_profile']

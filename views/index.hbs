@@ -1,14 +1,50 @@
-<a href="./todos/new">Create</a>
-<ul>
-  {{#each todos}}
-  <li>
-    <input type="checkbox" name="isDone" {{#if this.isDone}} checked {{/if}} disabled>
-    {{ this.name }}
-    <a href="./todos/{{ this._id }}">detail</a>
-    <a href="./todos/{{ this._id }}/edit">edit</a>
-    <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline">
-      <button type="submit">delete</button>
-    </form>
-  </li>
-  {{/each}}
-</ul>
+<a href="./expenses/new" class="btn btn-warning">新增支出</a>
+<div class="container col-3">
+
+
+  <!--總金額-->
+  <div class="row">
+    <p class="row mb-0">總金額:</p>
+    <p class="text-center" style="color: black; font-size: 100px;">{{ total }}</p>
+  </div>
+
+
+
+  <!--項目-->
+  <div class="row mt-1">
+    <ul class="list-group">
+      {{#each expense}}
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-8">
+            <div class="col-1">
+              {{#ifEquals 1 this.categoryId}}<i class="fa-solid fa-house"></i>{{/ifEquals}}
+              {{#ifEquals 2 this.categoryId}}<i class="fa-solid fa-van-shuttle"></i>{{/ifEquals}}
+              {{#ifEquals 3 this.categoryId}}<i class="fa-solid fa-face-grin-beam"></i>{{/ifEquals}}
+              {{#ifEquals 4 this.categoryId}}<i class="fa-solid fa-utensils"></i>{{/ifEquals}}
+              {{#ifEquals 5 this.categoryId}}<i class="fa-solid fa-pen"></i>{{/ifEquals}}
+            </div>
+            <div class="col-8">
+              <h4 style="font-size: 35px">
+                {{this.name}}
+                <span class="col-5 ">
+                  <p class="col text-end align-text-bottom" style="font-size: 35px; color:red">
+                    ${{this.amount}}
+                  </p>
+                </span>
+              </h4>
+              <p>{{this.date}}</p>
+            </div>
+          </div>
+          <div class="col-sm mt-5 p-2">
+            <a class="btn btn-warning" href="./expenses/{{ this._id }}/edit">edit</a>
+            <form action="./expenses/{{ this._id }}?_method=DELETE" method="POST" style="display: inline">
+              <button class="btn btn-danger" type="submit">delete</button>
+            </form>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const bodyParser = require('body-parser')
+const handlebarsHelper = require('./models/handlebarsHelper')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -18,7 +19,8 @@ const app = express();
 
 const port = process.env.PORT
 
-app.engine('hbs', exphbs({ default: 'main', extname: '.hbs' }))
+//引入handlebars-helper
+app.engine('hbs', exphbs({ default: 'main', extname: '.hbs', helpers: handlebarsHelper }))
 app.set('view engine', 'hbs')
 
 app.use(session({
@@ -26,6 +28,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }))
+
 app.use(bodyParser.urlencoded({ exrended: true }))
 app.use(methodOverride('_method'))
 
