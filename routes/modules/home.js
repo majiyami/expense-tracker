@@ -17,4 +17,23 @@ router.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+router.get('/search', (req, res) => {
+  const userId = req.user._id
+  const id = req.query.categoryId
+  Expense.find({ userId })
+    .lean()
+    .then(expenses => {
+      const findexpense = expenses.filter(data =>
+        data.categoryId === Number(id) //將id轉為數字
+      )
+      let total = 0
+      for (let i = 0; i < findexpense.length; i++) {
+        total += findexpense[i].amount
+      }
+      res.render('index', { expense: findexpense, id, total })
+    })
+    .catch(err => console.log(err))
+})
+
+
 module.exports = router

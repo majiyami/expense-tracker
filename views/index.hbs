@@ -1,5 +1,18 @@
 <a href="./expenses/new" class="btn btn-warning">新增支出</a>
 <div class="container col-3">
+  <form action="/search" method="GET">
+    <div class="row">
+      <select type="submit" class="text-center" id="categorySearch" name="categoryId" style=""
+        onchange="this.form.submit()" required />
+      <option value="">選擇類別</option>
+      <option value="1" {{#ifEquals 1 id }}selected{{/ifEquals}}>家居</option>
+      <option value="2" {{#ifEquals 2 id }}selected{{/ifEquals}}>交通</option>
+      <option value="3" {{#ifEquals 3 id }}selected{{/ifEquals}}>交通</option>
+      <option value="4" {{#ifEquals 4 id }}selected{{/ifEquals}}>餐飲</option>
+      <option value="5" {{#ifEquals 5 id }}selected{{/ifEquals}}>其他</option>
+      </select>
+    </div>
+  </form>
 
 
   <!--總金額-->
