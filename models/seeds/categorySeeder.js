@@ -19,6 +19,10 @@ const categoryList = [
   {
     id: 5,
     name: '其他'
+  },
+  {
+    id: 6,
+    name: 'all'
   }
 ]
 

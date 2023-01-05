@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Expense = require('../../models/expense')
 
+
 router.get('/', (req, res) => {
   const userId = req.user._id
   Expense.find({ userId })
@@ -20,6 +21,9 @@ router.get('/', (req, res) => {
 router.get('/search', (req, res) => {
   const userId = req.user._id
   const id = req.query.categoryId
+  if(id === '6'){
+   return res.redirect('/')
+  }
   Expense.find({ userId })
     .lean()
     .then(expenses => {
