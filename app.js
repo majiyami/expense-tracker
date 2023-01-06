@@ -4,10 +4,13 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const bodyParser = require('body-parser')
-const handlebarsHelper = require('./models/handlebarsHelper')
+
+
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
+
 const routes = require('./routes')
 
 const usePassport = require('./config/passport')
@@ -20,7 +23,13 @@ const app = express();
 const port = process.env.PORT || 3000
 
 //引入handlebars-helper
-app.engine('hbs', exphbs({ default: 'main', extname: '.hbs', helpers: handlebarsHelper }))
+app.engine('hbs', exphbs({ default: 'main', extname: '.hbs', helpers: {
+  dateFormat(date) {
+    return `${date.getFullYear()}-` + `${`0${date.getMonth() + 1}`.slice(-2)}-` + `${`0${date.getDate()}`.slice(-2)}`
+  },
+  ifEquals: (a, b, options) =>
+    String(a) === String(b) ? options.fn(this) : options.inverse(this)
+} }))
 app.set('view engine', 'hbs')
 
 app.use(session({

@@ -2,8 +2,7 @@
 <div class="container col-3">
   <form action="/search" method="GET">
     <div class="row">
-      <select type="submit" class="text-center" id="categorySearch" name="categoryId" style=""
-        onchange="this.form.submit()">
+      <select type="submit" class="text-center" id="categorySearch" name="categoryId" style="" onchange="this.form.submit()">
         <option value="6" {{#ifEquals 6 id }}selected{{/ifEquals}}>所有</option>
         <option value="1" {{#ifEquals 1 id }}selected{{/ifEquals}}>家居</option>
         <option value="2" {{#ifEquals 2 id }}selected{{/ifEquals}}>交通</option>

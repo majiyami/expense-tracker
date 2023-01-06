@@ -22,24 +22,23 @@
         <h4>日期*：</h4>
       </label>
       <div class="col-8">
-        <input type="date" class="form-control" id="date" name="date"
-          value="{{ expense.date }}" required />
+        <input type="date" class="form-control" aria-describedby="date"  id="date" name="date"
+          value="{{ dateFormat expense.date }}" required >
       </div>
     </div>
 
     <div class="mb-3 row">
-      <label for="categoryId" class="form-label col-4">
+      <label for="category" class="form-label col-4">
         <h4>類別*：</h4>
       </label>
       <div class="col-8">
-        <select type="text" class="form-control" id="categoryId" name="categoryId" value="{{ expense.categoryId }}"
-          required />
-          <option value="">類別</option>
-          <option value="1">家居</option>
-          <option value="2">交通</option>
-          <option value="3">娛樂</option>
-          <option value="4">餐飲</option>
-          <option value="5">其他</option>
+        <select  class="form-control" id="category" name="categoryId" value="{{ expense.categoryId }}" required >
+          
+          <option value="1" {{#ifEquals 1 expense.categoryId }}selected{{/ifEquals}}>家居</option>
+          <option value="2" {{#ifEquals 2 expense.categoryId }}selected{{/ifEquals}}>交通</option>
+          <option value="3" {{#ifEquals 3 expense.categoryId }}selected{{/ifEquals}}>娛樂</option>
+          <option value="4" {{#ifEquals 4 expense.categoryId }}selected{{/ifEquals}}>餐飲</option>
+          <option value="5" {{#ifEquals 5 expense.categoryId }}selected{{/ifEquals}}>其他</option>
         </select>
       </div>
     </div>
