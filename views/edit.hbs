@@ -22,18 +22,18 @@
         <h4>日期*：</h4>
       </label>
       <div class="col-8">
-        <input type="date" class="form-control" id="date" max="2099-12-31" min="2022-11-13" name="date"
-          value="{{ expense.date }}" required>
+        <input type="date" class="form-control" id="date" name="date"
+          value="{{ expense.date }}" required />
       </div>
     </div>
 
     <div class="mb-3 row">
-      <label for="category" class="form-label col-4">
+      <label for="categoryId" class="form-label col-4">
         <h4>類別*：</h4>
       </label>
       <div class="col-8">
-        <select type="text" class="form-control" id="category" name="categoryId" value="{{ expense.categoryId }}"
-          required>
+        <select type="text" class="form-control" id="categoryId" name="categoryId" value="{{ expense.categoryId }}"
+          required />
           <option value="">類別</option>
           <option value="1">家居</option>
           <option value="2">交通</option>

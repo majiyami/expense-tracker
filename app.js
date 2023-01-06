@@ -28,7 +28,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }))
-
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ exrended: true }))
 app.use(methodOverride('_method'))
 
